@@ -73,7 +73,7 @@ namespace ExercicioMenu
         {
             Console.WriteLine("digite o nome para adicionar:");
             //recebe o nome do usuario
-            string nome = Console.ReadLine().ToLower();
+            string nome = Console.ReadLine();
             //verifica se esse nome ja existe
             if (!VerificarNome(nome))
             {
@@ -116,19 +116,19 @@ namespace ExercicioMenu
         private static void AlterarNome()
         {
             Console.WriteLine("Digite o nome que deseja alterar na lista:");
-            string nomePAlterar = Console.ReadLine().ToLower();
+            string nomePAlterar = Console.ReadLine();
             //verifica se aquele nome existe na lista
             if (VerificarNome(nomePAlterar))
             {
                 for (int i = 0; i < nomes.Count; i++)
                 {
                     //encontra o nome que deseja alterar
-                    if (nomes[i] == nomePAlterar)
+                    if (nomes[i].ToLower().Trim() == nomePAlterar.ToLower().Trim())
                     {
                         Console.WriteLine("novo nome:");
-                            string novoNome = Console.ReadLine().ToLower();
+                        string novoNome = Console.ReadLine();
                         //verifica se o novo nome não existe na lista
-                        if(nomes.Contains(novoNome))
+                        if(VerificarNome(novoNome))
                         {
                             Console.WriteLine("Nome já cadastrado.\n");
                         } else
@@ -151,7 +151,7 @@ namespace ExercicioMenu
         {
             foreach (string n in nomes)
             {
-                if (nome == n)
+                if (nome.ToLower().Trim() == n.ToLower().Trim())
                 {
                     return true;
                 }
